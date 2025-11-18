@@ -1,0 +1,47 @@
+/* src/pages/Project2.css */
+.project-wrapper {
+  padding: 2rem;
+  max-width: 600px;
+  margin: 0 auto;
+}
+
+.task-form {
+  display: flex;
+  gap: 1rem;
+  margin-bottom: 1.5rem;
+}
+
+.task-form input {
+  flex: 1;
+  padding: 0.5rem;
+  font-size: 1rem;
+}
+
+.task-form button {
+  padding: 0.5rem 1rem;
+  font-size: 1rem;
+}
+
+.task-list {
+  list-style: none;
+  padding: 0;
+}
+
+.task-list li {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  background: #f9f9f9;
+  margin-bottom: 0.5rem;
+  padding: 0.5rem;
+  border-radius: 4px;
+}
+
+.task-list li.done {
+  text-decoration: line-through;
+  opacity: 0.6;
+}
+
+.task-buttons button {
+  margin-left: 0.5rem;
+}
