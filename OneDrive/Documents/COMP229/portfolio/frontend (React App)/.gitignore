@@ -1,3 +1,22 @@
+# Prevent system folders
+# ========================
+/../
+/../../
+/../../../
+*.lnk
+*.tmp
+Thumbs.db
+.DS_Store
+
+# Ignore entire Windows users dir accidentally
+C:/
+Users/
+OneDrive/
+Documents/
+Desktop/
+Downloads/
+
+
 ########################################
 # 🚫 Environment & Secrets
 ########################################
