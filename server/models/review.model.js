@@ -1,11 +1,11 @@
 import mongoose from "mongoose";
 import crypto from "crypto";
 //const mongoose = require('mongoose');
-const ShopSchema = new mongoose.Schema({
-  name: {
+const ReviewSchema = new mongoose.Schema({
+  title: {
     type: String,
     trim: true,
-    required: "Name is required",
+    required: "Title is required",
   },
   description: {
     type: String,
@@ -14,6 +14,10 @@ const ShopSchema = new mongoose.Schema({
   image: {
     data: Buffer,
     contentType: String,
+  },
+  product: {
+    type: mongoose.Schema.ObjectId,
+    ref: "Product",
   },
   owner: {
     type: mongoose.Schema.ObjectId,
@@ -25,4 +29,4 @@ const ShopSchema = new mongoose.Schema({
     default: Date.now,
   },
 });
-export default mongoose.model("Shop", ShopSchema);
+export default mongoose.model("Review", ReviewSchema);

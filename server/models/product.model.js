@@ -29,7 +29,7 @@ const ProductSchema = new mongoose.Schema({
     type: Date,
     default: Date.now,
   },
-  shop: { type: mongoose.Schema.ObjectId, ref: "Shop" },
+  user: { type: mongoose.Schema.ObjectId, ref: "User" },
 });
 
 export default mongoose.model("Product", ProductSchema);
