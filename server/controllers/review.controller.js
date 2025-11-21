@@ -32,7 +32,7 @@ const create = (req, res) => {
 };
 const reviewByID = async (req, res, next, id) => {
   try {
-    let review = await Review.findById(id).populate("owner", "_id name").exec();
+    let review = await Review.findById(id).populate("product", "_id name").populate("user", "_id name").exec();
     if (!review)
       return res.status("400").json({
         error: "Review not found",
@@ -89,7 +89,7 @@ const update = (req, res) => {
 const remove = async (req, res) => {
   try {
     let review = req.review;
-    let deletedReview = await Review.deleteOne({ _id: shop._id });
+    let deletedReview = await Review.deleteOne({ _id: review._id });
     res.json(deletedReview);
   } catch (err) {
     return res.status(400).json({
@@ -99,7 +99,7 @@ const remove = async (req, res) => {
 };
 const list = async (req, res) => {
   try {
-    let reviews = await Shop.find().populate("owner", "_id name");
+    let reviews = await Review.find();
     res.json(reviews);
   } catch (err) {
     return res.status(400).json({
@@ -110,7 +110,7 @@ const list = async (req, res) => {
 const listByProduct = async (req, res) => {
   try {
     let reviews = await Review.find({ product: req.product._id }).populate(
-      "owner",
+      "product",
       "_id name"
     );
     res.json(reviews);
@@ -137,6 +137,7 @@ export default {
   defaultPhoto,
   list,
   listByOwner,
+  listByProduct,
   read,
   update,
   remove,
