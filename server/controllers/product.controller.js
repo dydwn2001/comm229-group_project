@@ -15,7 +15,7 @@ const create = (req, res, next) => {
     Object.keys(fields).forEach((key) => (fields[key] = fields[key][0]));
     Object.keys(files).forEach((key) => (files[key] = files[key][0]));
     let product = new Product(fields);
-    product.shop = req.shop;
+    product.user = req.profile;
     if (files.image) {
       product.image.data = fs.readFileSync(files.image.filepath);
       product.image.contentType = files.image.mimetype;
@@ -30,12 +30,20 @@ const create = (req, res, next) => {
     }
   });
 };
+const list = async (req, res) => {
+  try {
+    let products = await Product.find();
+    res.json(products);
+  } catch (err) {
+    return res.status(400).json({
+      error: errorHandler.getErrorMessage(err),
+    });
+  }
+};
 
 const productByID = async (req, res, next, id) => {
   try {
-    let product = await Product.findById(id)
-      .populate("shop", "_id name")
-      .exec();
+    let product = await Product.findById(id);
     if (!product)
       return res.status(400).json({
         error: "Product not found",
@@ -126,5 +134,5 @@ export default {
   read,
   update,
   remove,
-  listByShop,
+  list,
 };
