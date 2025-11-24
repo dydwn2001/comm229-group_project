@@ -1,0 +1,27 @@
+{
+  "name": "picapica",
+  "version": "1.0.0",
+  "main": "server.js",
+  "scripts": {
+    "dev": "concurrently \"npm run client\" \"npm run server\"",
+    "client": "cd client && npm run dev",
+    "server": "nodemon server.js"
+  },
+  "devDependencies": {
+    "@vitejs/plugin-react": "^5.1.1",
+    "concurrently": "^9.2.1",
+    "nodemon": "^3.1.11",
+    "vite": "^7.2.4"
+  },
+  "dependencies": {
+    "body-parser": "^2.2.0",
+    "compression": "^1.8.0",
+    "cookie-parser": "^1.4.7",
+    "cors": "^2.8.5",
+    "dotenv": "^17.2.3",
+    "express": "^5.1.0",
+    "helmet": "^8.1.0",
+    "method-override": "^3.0.0",
+    "mongoose": "^8.15.1"
+  }
+}
